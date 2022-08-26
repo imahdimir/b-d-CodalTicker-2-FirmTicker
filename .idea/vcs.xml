@@ -8,11 +8,6 @@
     </option>
   </component>
   <component name="VcsDirectoryMappings">
-    <mapping directory="$PROJECT_DIR$/d-Status-changes" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/d-TSETMC_ID-2-Ticker-map" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/d-Ticker-2-BaseTicker-map" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/d-all-Codal-Letters" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/d-uniq-BaseTickers" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/get-all-Codal-Letters" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
   </component>
 </project>
