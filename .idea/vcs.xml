@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GitSharedSettings">
+    <option name="FORCE_PUSH_PROHIBITED_PATTERNS">
+      <list>
+        <option value="main" />
+      </list>
+    </option>
+  </component>
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$/d-Status-changes" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/d-TSETMC_ID-2-Ticker-map" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/d-Ticker-2-BaseTicker-map" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/d-all-Codal-Letters" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/d-uniq-BaseTickers" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/get-all-Codal-Letters" vcs="Git" />
+  </component>
+</project>
