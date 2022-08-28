@@ -6,7 +6,7 @@
 
 import pandas as pd
 from githubdata import GithubData
-from mirutil import funcs as mf
+from mirutil.df_utils import read_data_according_to_type as rdata
 
 
 allcod_rp_url = 'https://github.com/imahdimir/d-all-Codal-Letters'
@@ -32,37 +32,31 @@ def main() :
 
   ##
 
-
-  ac_rp = GithubData(allcod_rp_url)
-
+  rp_ac = GithubData(allcod_rp_url)
   ##
-  ac_rp.clone()
-
+  rp_ac.clone()
   ##
-  dfap = ac_rp.data_filepath
-  dfa = mf.read_data_according_to_type(dfap)
-
+  dafp = rp_ac.data_filepath
+  da = rdata(dafp)
   ##
-  dfa = dfa[[codtic]].drop_duplicates()
-  dfa = dfa.dropna()
-
+  da = da[[codtic]].drop_duplicates()
+  da = da.dropna()
   ##
   t2b_rp = GithubData(t2b_rp_url)
   t2b_rp.clone()
-
   ##
   dftp = t2b_rp.data_filepath
   dft = mf.read_data_according_to_type(dftp)
 
   ##
-  dfa[btic] = dfa[codtic].map(dft[btic])
+  da[btic] = da[codtic].map(dft[btic])
 
   ##
-  msk = dfa[btic].isna()
+  msk = da[btic].isna()
   len(msk[msk])
 
   ##
-  dfa['1'] = dfa[codtic].apply(mf.normalize_fa_str)
+  da['1'] = da[codtic].apply(mf.normalize_fa_str)
 
   ##
   dft = dft.reset_index()
@@ -72,12 +66,12 @@ def main() :
   dft = dft.set_index('1')
 
   ##
-  msk = dfa[btic].isna()
-  dfa.loc[msk , btic] = dfa.loc[msk , '1'].map(dft[btic])
+  msk = da[btic].isna()
+  da.loc[msk , btic] = da.loc[msk , '1'].map(dft[btic])
 
   ##
-  msk = dfa[btic].isna()
-  df1 = dfa[msk]
+  msk = da[btic].isna()
+  df1 = da[msk]
   len(msk[msk])
 
   ##
@@ -93,21 +87,21 @@ def main() :
   dfb = dfb.set_index('i')
 
   ##
-  msk = dfa[btic].isna()
-  dfa.loc[msk , btic] = dfa.loc[msk , codtic].map(dfb[btic])
+  msk = da[btic].isna()
+  da.loc[msk , btic] = da.loc[msk , codtic].map(dfb[btic])
 
   ##
-  msk = dfa[btic].isna()
-  df1 = dfa[msk]
+  msk = da[btic].isna()
+  df1 = da[msk]
   len(msk[msk])
 
   ##
-  msk = dfa[btic].isna()
-  dfa.loc[msk , btic] = dfa.loc[msk , '1'].map(dfb[btic])
+  msk = da[btic].isna()
+  da.loc[msk , btic] = da.loc[msk , '1'].map(dfb[btic])
 
   ##
-  msk = dfa[btic].isna()
-  df1 = dfa[msk]
+  msk = da[btic].isna()
+  df1 = da[msk]
   len(msk[msk])
 
   ##
@@ -116,18 +110,18 @@ def main() :
   dfb = dfb.set_index('1')
 
   ##
-  msk = dfa[btic].isna()
-  dfa.loc[msk , btic] = dfa.loc[msk , '1'].map(dfb[btic])
+  msk = da[btic].isna()
+  da.loc[msk , btic] = da.loc[msk , '1'].map(dfb[btic])
 
   ##
-  msk = dfa[btic].isna()
-  df1 = dfa[msk]
+  msk = da[btic].isna()
+  df1 = da[msk]
   len(msk[msk])
 
   ##
-  dfa = dfa[[codtic , btic]]
-  dfa = dfa.dropna()
-  dfa = dfa.set_index(codtic)
+  da = da[[codtic , btic]]
+  da = da.dropna()
+  da = da.set_index(codtic)
 
   ##
   c2b_rp = GithubData(c2b_rp_url)
@@ -137,7 +131,7 @@ def main() :
   dfcp = c2b_rp.data_filepath
 
   ##
-  mf.save_as_prq_wo_index(dfa , dfcp)
+  mf.save_as_prq_wo_index(da , dfcp)
 
   ##
   msg = 'v1'
@@ -147,7 +141,7 @@ def main() :
 
   ##
 
-  ac_rp.rmdir()
+  rp_ac.rmdir()
   c2b_rp.rmdir()
   t2b_rp.rmdir()
   bt_rp.rmdir()
